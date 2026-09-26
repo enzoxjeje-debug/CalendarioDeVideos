@@ -163,9 +163,8 @@ Twilio.
 ### Comprobar que quedó bien
 
 - `GET /api/notify` dice qué canales están activos (sin exponer credenciales).
-- En la app, debajo del calendario, hay una fila con el estado de cada canal.
-- Entrando como usuario 2 aparece el botón **Probar aviso**, que manda un aviso de prueba
-  por todos los canales configurados (`POST /api/notify`).
+- `POST /api/notify` (con el token del usuario 2) manda un aviso de prueba por todos los
+  canales configurados.
 
 ## API
 

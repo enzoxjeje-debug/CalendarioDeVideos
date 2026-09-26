@@ -14,7 +14,6 @@ import {
 import { dayStatus, groupByDate, monthStats, pageLabel, STATUS_LABEL } from "@/lib/logic";
 import { useCalendar } from "./CalendarProvider";
 import DayDrawer from "./DayDrawer";
-import NotifyStatus from "./NotifyStatus";
 import { Legend, PageChip, StatusDot, StorageNotice } from "./ui";
 import { IconCalendar, IconChevronLeft, IconChevronRight, IconPlus } from "./icons";
 
@@ -287,17 +286,6 @@ export default function CalendarSection() {
               })}
             </div>
           </div>
-        </div>
-
-        <div
-          data-reveal
-          className="mt-4 flex flex-col items-center justify-between gap-3 sm:flex-row"
-        >
-          <NotifyStatus />
-          <p className="text-center text-xs text-ink-500 sm:text-right">
-            Ambos pueden editar a la vez: los cambios se sincronizan automáticamente cada pocos
-            segundos.
-          </p>
         </div>
       </div>
 
