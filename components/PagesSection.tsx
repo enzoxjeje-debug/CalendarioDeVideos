@@ -49,7 +49,7 @@ export default function PagesSection() {
   async function handleAddPage(event: React.FormEvent) {
     event.preventDefault();
     if (name.trim().length < 2) {
-      setFormError("El nombre necesita al menos 2 caracteres");
+      setFormError("El nombre debe tener al menos 2 caracteres");
       return;
     }
     const ok = await addPage(name.trim(), accent);
@@ -58,7 +58,7 @@ export default function PagesSection() {
       setAccent(ACCENTS[state.pages.length % ACCENTS.length] ?? "cyan");
       setFormError(null);
     } else {
-      setFormError("No se pudo crear la pagina. Quiza ya existe.");
+      setFormError("No se pudo crear la página. Quizá ya existe.");
     }
   }
 
@@ -66,10 +66,10 @@ export default function PagesSection() {
     <section id="paginas" ref={rootRef} className="relative py-20 sm:py-24">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 sm:px-6">
         <SectionHeading
-          label="Paginas"
+          label="Páginas"
           icon={<IconLayers size={13} />}
-          title="Los canales donde se sube cada video"
-          description="GGDROP y LLAVEDROP vienen listas. Agrega las paginas que necesites: cada una tiene su color y su propio historial de videos dentro del calendario."
+          title="Los canales donde se publica cada video"
+          description="GGDROP y LLAVEDROP vienen incluidas. Agrega las páginas que necesites: cada una tiene su color y su propio historial de videos dentro del calendario."
         />
 
         <div className="grid gap-4 lg:grid-cols-3">
@@ -104,8 +104,8 @@ export default function PagesSection() {
                       disabled={page.builtIn || sync === "saving"}
                       title={
                         page.builtIn
-                          ? "Las paginas preestablecidas no se pueden borrar"
-                          : "Borrar pagina"
+                          ? "Las páginas preestablecidas no se pueden borrar"
+                          : "Borrar página"
                       }
                       onClick={() => void removePage(page.id)}
                     >
@@ -140,14 +140,14 @@ export default function PagesSection() {
                   <p className="text-xs text-ink-400">
                     {stats.next ? (
                       <>
-                        Proximo video:{" "}
+                        Próximo video:{" "}
                         <span className="font-semibold text-ink-200">
                           {formatShortDate(stats.next.date)}
                         </span>{" "}
-                        · {stats.next.title || "sin titulo"}
+                        · {stats.next.title || "sin título"}
                       </>
                     ) : (
-                      "Todavia sin videos programados"
+                      "Todavía sin videos programados"
                     )}
                   </p>
                 </article>
@@ -163,7 +163,7 @@ export default function PagesSection() {
             >
               <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
                 <IconPlus size={15} />
-                Agregar pagina
+                Agregar página
               </h3>
               <div>
                 <label className="label" htmlFor="page-name">
@@ -179,7 +179,7 @@ export default function PagesSection() {
                 />
               </div>
               <div>
-                <span className="label">Color de la pagina</span>
+                <span className="label">Color de la página</span>
                 <div className="flex flex-wrap gap-2">
                   {ACCENTS.map((item) => (
                     <button
@@ -212,10 +212,10 @@ export default function PagesSection() {
 
               <button type="submit" className="btn btn-primary" disabled={sync === "saving"}>
                 <IconPlus size={15} />
-                Crear pagina
+                Crear página
               </button>
               <p className="text-[0.7rem] leading-relaxed text-ink-500">
-                Maximo 12 paginas. Al borrar una pagina tambien se borran los videos asignados a
+                Máximo 12 páginas. Al borrar una página también se eliminan los videos asignados a
                 ella.
               </p>
             </form>

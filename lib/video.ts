@@ -47,7 +47,7 @@ export function youtubeThumbnail(id: string): string {
 export function parseVideoUrl(raw: string): VideoInfo {
   const url = normalize(raw);
   if (!url) {
-    return { provider: "otro", id: null, thumbnail: null, label: "Link" };
+    return { provider: "otro", id: null, thumbnail: null, label: "Enlace" };
   }
 
   const videoId = youtubeId(url);
@@ -80,7 +80,7 @@ export function parseVideoUrl(raw: string): VideoInfo {
     return { provider: "archivo", id: null, thumbnail: null, label: "Archivo de video" };
   }
 
-  return { provider: "otro", id: null, thumbnail: null, label: host || "Link" };
+  return { provider: "otro", id: null, thumbnail: null, label: host || "Enlace" };
 }
 
 /** true cuando el link ya trae miniatura automatica (YouTube o una imagen). */

@@ -45,14 +45,14 @@ export async function POST(request: Request) {
 
   if (tooManyAttempts(key)) {
     return NextResponse.json(
-      { error: "Demasiados intentos. Espera unos minutos e intentalo otra vez." },
+      { error: "Demasiados intentos. Espera unos minutos e inténtalo de nuevo." },
       { status: 429 },
     );
   }
 
   if (!user2PinConfigured()) {
     return NextResponse.json(
-      { error: "El acceso del usuario 2 todavia no esta configurado en el servidor." },
+      { error: "El acceso del usuario 2 todavía no está configurado en el servidor." },
       { status: 503 },
     );
   }
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
 
   if (!verifyUser2Pin(pin)) {
     registerFailure(key);
-    // Pequena espera para que probar PINes a la fuerza salga caro.
+    // Pequeña espera para que probar PINes a la fuerza salga caro.
     await sleep(400);
     return NextResponse.json({ error: "PIN incorrecto" }, { status: 401 });
   }

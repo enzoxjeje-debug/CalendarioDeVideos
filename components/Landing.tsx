@@ -7,8 +7,6 @@ import SiteHeader from "./SiteHeader";
 import PinGate from "./PinGate";
 import CalendarSection from "./CalendarSection";
 import PagesSection from "./PagesSection";
-import HowItWorks from "./HowItWorks";
-import SiteFooter from "./SiteFooter";
 import { IconX } from "./icons";
 import type { CalendarState, StorageKind } from "@/lib/types";
 
@@ -94,9 +92,7 @@ function LandingShell() {
       <main>
         <CalendarSection />
         <PagesSection />
-        <HowItWorks />
       </main>
-      <SiteFooter />
 
       {/* El modal vive aqui, fuera del encabezado (que tiene backdrop-blur y
           atraparia el posicionamiento `fixed` de sus hijos). */}

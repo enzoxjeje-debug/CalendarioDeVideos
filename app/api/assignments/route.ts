@@ -50,7 +50,7 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as Record<string, unknown>;
   } catch {
-    return bad("JSON invalido");
+    return bad("JSON inválido");
   }
 
   const date = typeof body.date === "string" ? body.date : "";
@@ -60,9 +60,9 @@ export async function POST(request: Request) {
   const notes = typeof body.notes === "string" ? body.notes.trim().slice(0, 400) : "";
   const id = typeof body.id === "string" && body.id ? body.id : undefined;
 
-  if (!DATE_RE.test(date)) return bad("Fecha invalida (usa YYYY-MM-DD)");
-  if (!pageId) return bad("Falta la pagina");
-  if (!title) return bad("Escribe el titulo o la idea del video");
+  if (!DATE_RE.test(date)) return bad("Fecha inválida (usa el formato AAAA-MM-DD)");
+  if (!pageId) return bad("Falta la página");
+  if (!title) return bad("Escribe el título o la idea del video");
 
   const actor = asActor(body.actor);
   const denied = requireUser2(request, actor);
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
 
   const current = await getState();
   if (!current.pages.some((page) => page.id === pageId)) {
-    return bad("La pagina no existe", 404);
+    return bad("La página no existe", 404);
   }
 
   const next = await mutateState(
@@ -94,12 +94,12 @@ export async function PATCH(request: Request) {
   try {
     body = (await request.json()) as Record<string, unknown>;
   } catch {
-    return bad("JSON invalido");
+    return bad("JSON inválido");
   }
 
   const id = typeof body.id === "string" ? body.id : "";
   const status = body.status === "ready" ? "ready" : "assigned";
-  if (!id) return bad("Falta el id de la asignacion");
+  if (!id) return bad("Falta el id de la asignación");
 
   const actor = asActor(body.actor);
   const denied = requireUser2(request, actor);
@@ -108,7 +108,7 @@ export async function PATCH(request: Request) {
   const current = await getState();
   const previous = current.assignments.find((item) => item.id === id);
   if (!previous) {
-    return bad("La asignacion no existe", 404);
+    return bad("La asignación no existe", 404);
   }
 
   const next = await mutateState((state) => applySetStatus(state, { id, status, actor }));
@@ -124,7 +124,7 @@ export async function PATCH(request: Request) {
       after(async () => {
         await notifyVideoReady({
           date: entry.date,
-          pageName: page?.name ?? "Pagina",
+          pageName: page?.name ?? "Página",
           title: entry.title,
           url: entry.url,
           totalForDay: sameDay.length,
@@ -141,7 +141,7 @@ export async function PATCH(request: Request) {
 
 export async function DELETE(request: Request) {
   const id = new URL(request.url).searchParams.get("id");
-  if (!id) return bad("Falta el id de la asignacion");
+  if (!id) return bad("Falta el id de la asignación");
 
   const next = await mutateState((state) => applyDeleteAssignment(state, id));
   return payload(next);

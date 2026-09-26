@@ -72,7 +72,7 @@ export function normalizeState(raw: unknown): CalendarState {
     seenPageIds.add(page.id);
     pages.push({
       id: page.id,
-      name: typeof page.name === "string" && page.name.trim() ? page.name.trim() : "Pagina",
+      name: typeof page.name === "string" && page.name.trim() ? page.name.trim() : "Página",
       slug:
         typeof page.slug === "string" && page.slug.trim()
           ? page.slug

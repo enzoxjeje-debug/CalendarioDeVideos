@@ -4,8 +4,8 @@ import { parseVideoUrl } from "./video";
 /**
  * Avisos al usuario 1 cuando el usuario 2 marca un video como listo.
  *
- * Todo sale del servidor y cada canal se activa solo si estan sus variables de
- * entorno: sin configuracion no se envia nada y la app sigue funcionando igual.
+ * Todo sale del servidor y cada canal se activa solo si están sus variables de
+ * entorno: sin configuración no se envía nada y la app sigue funcionando igual.
  *  - Email:    RESEND_API_KEY + NOTIFY_EMAIL_TO (+ NOTIFY_EMAIL_FROM)
  *  - WhatsApp: WHATSAPP_PHONE + WHATSAPP_APIKEY  (CallMeBot, gratis para uso personal)
  *  - Webhook:  NOTIFY_WEBHOOK_URL  (Zapier/Make/n8n/Telegram/Discord/WhatsApp Cloud API)
@@ -97,14 +97,14 @@ function plainText(event: VideoReadyEvent, link: string): string {
   const pending = event.totalForDay - event.readyForDay;
   const rest =
     pending > 0
-      ? `\nQuedan ${pending} video(s) pendientes ese dia.`
-      : "\nEse dia queda completo en verde.";
+      ? `\nQuedan ${pending} video(s) pendientes ese día.`
+      : "\nEse día queda completo en verde.";
   return [
-    `${prefix}Video subido en ${event.pageName}`,
+    `${prefix}Video publicado en ${event.pageName}`,
     `Fecha: ${formatLongDate(fromKey(event.date))}`,
-    `Video: ${event.title || "sin titulo"}`,
-    event.url ? `Link: ${event.url}` : "Sin link todavia",
-    `Lo confirmo: ${event.confirmedBy}`,
+    `Video: ${event.title || "sin título"}`,
+    event.url ? `Enlace: ${event.url}` : "Sin enlace todavía",
+    `Confirmado por: ${event.confirmedBy}`,
     rest.trim(),
     link,
   ].join("\n");
@@ -129,10 +129,10 @@ function emailHtml(event: VideoReadyEvent, link: string): string {
 <html lang="es"><body style="margin:0;background:#05060d;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif">
   <div style="max-width:520px;margin:0 auto;padding:28px 20px">
     <p style="margin:0 0 6px;color:#22d97f;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700">
-      ${event.test ? "Prueba de aviso" : "Video subido"}
+      ${event.test ? "Prueba de aviso" : "Video publicado"}
     </p>
     <h1 style="margin:0 0 4px;color:#ffffff;font-size:22px;line-height:1.25">
-      ${escapeHtml(event.pageName)} · ${escapeHtml(event.title || "Video sin titulo")}
+      ${escapeHtml(event.pageName)} · ${escapeHtml(event.title || "Video sin título")}
     </h1>
     <p style="margin:0 0 18px;color:#9aa2c0;font-size:14px">
       ${escapeHtml(formatLongDate(fromKey(event.date)))}
@@ -146,11 +146,11 @@ function emailHtml(event: VideoReadyEvent, link: string): string {
         : ""
     }
     <table style="border-collapse:collapse;margin:18px 0 20px;width:100%">
-      ${row("Pagina", event.pageName)}
-      ${row("Confirmo", event.confirmedBy)}
+      ${row("Página", event.pageName)}
+      ${row("Confirmó", event.confirmedBy)}
       ${row("Asignado por", event.assignedBy)}
       ${row(
-        "Estado del dia",
+        "Estado del día",
         pending > 0 ? `${event.readyForDay} listos · ${pending} pendientes` : "Todo listo en verde",
       )}
     </table>
@@ -162,7 +162,7 @@ function emailHtml(event: VideoReadyEvent, link: string): string {
     <a href="${escapeHtml(link)}" style="display:inline-block;background:#8b5cf6;color:#ffffff;text-decoration:none;
        font-size:14px;font-weight:600;padding:12px 20px;border-radius:999px">Abrir el calendario</a>
     <p style="margin:26px 0 0;color:#4c5473;font-size:11px">
-      Aviso automatico de VideoCal · puedes desactivarlo quitando las variables de entorno.
+      Aviso automático de VideoCal · puedes desactivarlo quitando las variables de entorno.
     </p>
   </div>
 </body></html>`;
@@ -171,7 +171,7 @@ function emailHtml(event: VideoReadyEvent, link: string): string {
 export async function notifyVideoReady(event: VideoReadyEvent): Promise<NotifyResult[]> {
   const results: NotifyResult[] = [];
   const link = appUrl();
-  const subject = `${event.test ? "[Prueba] " : ""}Video subido: ${event.title || event.pageName} (${event.pageName})`;
+  const subject = `${event.test ? "[Prueba] " : ""}Video publicado: ${event.title || event.pageName} (${event.pageName})`;
   const text = plainText(event, link);
   const config = notifyChannels();
 
@@ -196,9 +196,9 @@ export async function notifyVideoReady(event: VideoReadyEvent): Promise<NotifyRe
 
   const whatsapp = whatsappTarget();
   if (whatsapp) {
-    const message = `${event.test ? "🧪 Prueba de aviso" : "✅ *Video subido*"}\n` +
+    const message = `${event.test ? "🧪 Prueba de aviso" : "✅ *Video publicado*"}\n` +
       `*${event.pageName}* · ${formatLongDate(fromKey(event.date))}\n` +
-      `🎬 ${event.title || "Sin titulo"}\n` +
+      `🎬 ${event.title || "Sin título"}\n` +
       (event.url ? `🔗 ${event.url}\n` : "") +
       `Confirmado por ${event.confirmedBy}\n${link}`;
     const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(whatsapp.phone)}&text=${encodeURIComponent(message)}&apikey=${encodeURIComponent(whatsapp.apiKey)}`;
@@ -237,7 +237,7 @@ export async function notifyVideoReady(event: VideoReadyEvent): Promise<NotifyRe
     results.push({
       channel: "console",
       ok: true,
-      detail: "sin canales configurados: revisa .env.example",
+      detail: "sin canales configurados: consulta .env.example",
     });
   }
 

@@ -9,7 +9,7 @@ export function pageLabel(pages: PageItem[], id: string): PageItem {
   return (
     pageById(pages, id) ?? {
       id,
-      name: "Pagina eliminada",
+      name: "Página eliminada",
       slug: "—",
       accent: "cyan",
       builtIn: false,

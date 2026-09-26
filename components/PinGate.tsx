@@ -63,7 +63,7 @@ export default function PinGate({ onClose }: { onClose: () => void }) {
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     if (checking || pin.length < 4) {
-      setMessage("El PIN tiene 4 digitos");
+      setMessage("El PIN tiene 4 dígitos");
       shake();
       return;
     }
@@ -110,12 +110,12 @@ export default function PinGate({ onClose }: { onClose: () => void }) {
           </div>
 
           <p className="mt-3 text-sm leading-relaxed text-ink-300">
-            Este usuario entra con un PIN numerico. Solo lo conoce {users.user2}.
+            Este usuario entra con un PIN numérico. Solo lo conoce {users.user2}.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-3">
             <label className="label" htmlFor="user2-pin">
-              PIN numerico
+              PIN numérico
             </label>
             <input
               id="user2-pin"
@@ -150,7 +150,7 @@ export default function PinGate({ onClose }: { onClose: () => void }) {
           </form>
 
           <p className="mt-4 text-[0.68rem] leading-relaxed text-ink-500">
-            Si no conoces el PIN puedes seguir como {users.user1}: el calendario y los videos se
+            Si no conoces el PIN puedes continuar como {users.user1}: el calendario y los videos se
             ven igual.
           </p>
         </div>

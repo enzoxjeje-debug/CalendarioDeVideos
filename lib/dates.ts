@@ -45,7 +45,7 @@ export function monthMatrix(month: Date, weekStartsOn = 1): GridDay[] {
   return days;
 }
 
-export const WEEKDAYS = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
+export const WEEKDAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 
 export function formatMonth(date: Date): string {
   return new Intl.DateTimeFormat("es-ES", {

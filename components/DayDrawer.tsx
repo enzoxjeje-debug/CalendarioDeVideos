@@ -117,11 +117,11 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     if (!pageId) {
-      setFormError("Primero crea una pagina en la seccion Paginas");
+      setFormError("Primero crea una página en la sección Páginas");
       return;
     }
     if (!title.trim()) {
-      setFormError("Escribe el titulo o la idea del video");
+      setFormError("Escribe el título o la idea del video");
       return;
     }
     const ok = await saveAssignment({ id: editingId ?? undefined, date: dateKey, pageId, title, url, notes });
@@ -181,14 +181,14 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
         <div className="flex flex-col gap-6 px-5 py-5">
           <section data-drawer-item className="flex flex-col gap-3">
             <h4 className="text-[0.68rem] font-semibold tracking-[0.18em] text-ink-400 uppercase">
-              {entries.length > 0 ? `Videos de este dia (${entries.length})` : "Sin videos este dia"}
+              {entries.length > 0 ? `Videos de este día (${entries.length})` : "Sin videos este día"}
             </h4>
 
             {entries.length === 0 ? (
               <p className="rounded-2xl border border-dashed border-white/10 bg-white/[0.03] px-4 py-6 text-sm text-ink-400">
-                Este dia esta libre. Asigna el titulo de lo que hay que subir: el dia se pinta de{" "}
-                <span className="font-semibold text-danger-400">rojo</span>, {" "}
-                {users.user2} le agrega el link (con su miniatura) y lo confirma en{" "}
+                Este día está libre. Asigna el título de lo que hay que subir: el día se marca en{" "}
+                <span className="font-semibold text-danger-400">rojo</span>, {users.user2} añade el
+                enlace (con su miniatura) y lo confirma en{" "}
                 <span className="font-semibold text-success-400">verde</span>.
               </p>
             ) : (
@@ -209,7 +209,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
                         {entry.url ? (
                           <VideoThumb url={entry.url} size="md" />
                         ) : (
-                          <ThumbPlaceholder size="md" label="Link pendiente" />
+                          <ThumbPlaceholder size="md" label="Enlace pendiente" />
                         )}
 
                         <div className="min-w-0 flex-1">
@@ -219,7 +219,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
                           </div>
 
                           <p className="mt-2.5 text-sm font-semibold text-white">
-                            {entry.title || "Video sin titulo"}
+                            {entry.title || "Video sin título"}
                           </p>
 
                           {entry.url ? (
@@ -234,7 +234,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
                             </a>
                           ) : (
                             <p className="mt-1.5 text-xs text-ink-500">
-                              Todavia sin link: lo agrega {users.user2}.
+                              Todavía sin enlace: lo añade {users.user2}.
                             </p>
                           )}
                         </div>
@@ -247,10 +247,10 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
                       ) : null}
 
                       <p className="mt-2 text-[0.7rem] text-ink-500">
-                        Asigno: <span className="text-danger-400">{users[entry.createdBy]}</span>
+                        Asignó: <span className="text-danger-400">{users[entry.createdBy]}</span>
                         {entry.status === "ready" && entry.readyBy ? (
                           <>
-                            {" · Confirmo: "}
+                            {" · Confirmó: "}
                             <span className="text-success-400">{users[entry.readyBy]}</span>
                           </>
                         ) : null}
@@ -311,7 +311,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
             </h4>
 
             <div>
-              <span className="label">Pagina</span>
+              <span className="label">Página</span>
               <div className="flex flex-wrap gap-2">
                 {state.pages.map((page) => {
                   const active = page.id === pageId;
@@ -338,7 +338,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
 
             <div>
               <label className="label" htmlFor="video-title">
-                Titulo o idea del video
+                Título o idea del video
               </label>
               <input
                 id="video-title"
@@ -355,7 +355,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
               <>
                 <div>
                   <label className="label" htmlFor="video-url">
-                    Link del video
+                    Enlace del video
                   </label>
                   <input
                     id="video-url"
@@ -369,7 +369,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
                     <div className="mt-3 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-3">
                       <VideoThumb url={url} size="md" />
                       <p className="text-[0.7rem] leading-relaxed text-ink-400">
-                        Asi se vera la miniatura del video en el calendario y en la lista.
+                        Así se verá la miniatura del video en el calendario y en la lista.
                       </p>
                     </div>
                   ) : null}
@@ -386,15 +386,15 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
                     value={notes}
                     maxLength={400}
                     onChange={(event) => setNotes(event.target.value)}
-                    placeholder="Duracion, musica, hooks, lo que sea util para el otro"
+                    placeholder="Duración, música, hooks, cualquier detalle útil para la otra persona"
                   />
                 </div>
               </>
             ) : (
               <p className="rounded-2xl border border-dashed border-white/10 bg-white/[0.03] px-4 py-3 text-[0.72rem] leading-relaxed text-ink-400">
-                El <span className="font-semibold text-ink-200">link</span> y las{" "}
-                <span className="font-semibold text-ink-200">notas</span> los agrega{" "}
-                {users.user2} cuando tenga el video. Tu solo pones el titulo de lo que hay que
+                El <span className="font-semibold text-ink-200">enlace</span> y las{" "}
+                <span className="font-semibold text-ink-200">notas</span> los añade{" "}
+                {users.user2} cuando tenga el video. Tú solo defines el título de lo que hay que
                 subir.
               </p>
             )}
@@ -419,7 +419,7 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
                 ) : (
                   <>
                     <IconPlus size={15} />
-                    Asignar video a este dia
+                    Asignar video a este día
                   </>
                 )}
               </button>
@@ -431,14 +431,14 @@ export default function DayDrawer({ dateKey, onClose }: Props) {
             </div>
 
             <p className="text-[0.7rem] leading-relaxed text-ink-500">
-              Estas como <span className="font-semibold text-ink-300">{myName}</span>. Al guardar,
-              el dia queda en <span className="text-danger-400">rojo</span> hasta que alguien lo
+              Estás como <span className="font-semibold text-ink-300">{myName}</span>. Al guardar,
+              el día queda en <span className="text-danger-400">rojo</span> hasta que alguien lo
               marque como listo.
             </p>
 
             {canEditMedia && editingId === null && url.trim() === "" ? (
               <p className="text-[0.7rem] leading-relaxed text-ink-500">
-                Puedes guardar solo el titulo y pegar el link despues, cuando el video ya exista:
+                Puedes guardar solo el título y añadir el enlace después, cuando el video ya exista:
                 la miniatura aparece en cuanto lo agregues.
               </p>
             ) : null}

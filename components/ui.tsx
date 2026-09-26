@@ -94,9 +94,9 @@ export function StatusPill({ status }: { status: DayStatus }) {
 
 export function Legend({ user1, user2 }: { user1: string; user2: string }) {
   const items = [
-    { status: "empty" as DayStatus, title: "Sin video", text: "Dia libre" },
-    { status: "pending" as DayStatus, title: "Rojo", text: `${user1} asigno el video` },
-    { status: "ready" as DayStatus, title: "Verde", text: `${user2} confirmo que esta listo` },
+    { status: "empty" as DayStatus, title: "Sin video", text: "Día libre" },
+    { status: "pending" as DayStatus, title: "Rojo", text: `${user1} asignó el video` },
+    { status: "ready" as DayStatus, title: "Verde", text: `${user2} confirmó que está listo` },
     { status: "mixed" as DayStatus, title: "Mitad", text: "Hay videos listos y pendientes" },
   ];
   return (
@@ -164,33 +164,8 @@ export function StorageNotice({ storage }: { storage: StorageKind }) {
       <p>
         <span className="font-semibold">Modo demo (memoria):</span> los cambios se ven al
         instante pero se pierden al reiniciar. Conecta una base Redis (Upstash) en Vercel
-        para guardarlos de verdad — mira <code className="font-mono">.env.example</code>.
+        para guardarlos de verdad: consulta <code className="font-mono">.env.example</code>.
       </p>
     </div>
-  );
-}
-
-export function StorageBadge({ storage }: { storage: StorageKind }) {
-  const map: Record<StorageKind, { label: string; color: string }> = {
-    redis: { label: "Base compartida conectada", color: "#4ee79b" },
-    file: { label: "Guardando en archivo local", color: "#fbbf24" },
-    memory: { label: "Solo en memoria (demo)", color: "#ff7382" },
-  };
-  const info = map[storage];
-  return (
-    <span
-      className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.68rem] font-semibold"
-      style={{
-        color: info.color,
-        borderColor: "rgba(148,163,210,0.18)",
-        backgroundColor: "rgba(148,163,210,0.08)",
-      }}
-    >
-      <span
-        className="h-1.5 w-1.5 rounded-full"
-        style={{ background: info.color, boxShadow: `0 0 8px ${info.color}` }}
-      />
-      {info.label}
-    </span>
   );
 }

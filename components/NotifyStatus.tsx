@@ -28,7 +28,7 @@ export default function NotifyStatus() {
   }, []);
 
   const items: { key: keyof Channels; label: string }[] = [
-    { key: "email", label: "Email" },
+    { key: "email", label: "Correo" },
     { key: "whatsapp", label: "WhatsApp" },
     { key: "webhook", label: "Webhook" },
   ];
@@ -47,7 +47,7 @@ export default function NotifyStatus() {
     }
     const results = data?.results ?? [];
     if (results.length === 0) {
-      setMessage("No hay ningun canal configurado todavia");
+      setMessage("No hay ningún canal configurado todavía");
       return;
     }
     setMessage(
@@ -61,7 +61,7 @@ export default function NotifyStatus() {
     <div className="flex flex-wrap items-center gap-2 text-xs text-ink-400">
       <span className="inline-flex items-center gap-1.5 font-semibold tracking-[0.1em] text-ink-500 uppercase">
         <IconBell size={13} />
-        Aviso a {users.user1}
+        Aviso para {users.user1}
       </span>
 
       {items.map((item) => {
@@ -92,7 +92,7 @@ export default function NotifyStatus() {
         <span className="text-ink-500">comprobando…</span>
       ) : anyOn ? null : (
         <span className="text-ink-500">
-          sin configurar (mira el README para activarlo por email o WhatsApp)
+          sin configurar (consulta el README para activarlo por correo o WhatsApp)
         </span>
       )}
 

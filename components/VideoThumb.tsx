@@ -63,10 +63,10 @@ export default function VideoThumb({
   );
 }
 
-/** Hueco visible cuando el video todavia no tiene link (lo agrega el usuario 2). */
+/** Hueco visible cuando el video todavía no tiene enlace (lo añade el usuario 2). */
 export function ThumbPlaceholder({
   size = "md",
-  label = "Sin link",
+  label = "Sin enlace",
 }: {
   size?: Size;
   label?: string;

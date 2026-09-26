@@ -7,8 +7,7 @@ import { IconCalendar, IconLock, IconRefresh } from "./icons";
 
 const NAV = [
   { href: "#calendario", label: "Calendario" },
-  { href: "#paginas", label: "Paginas" },
-  { href: "#como-funciona", label: "Como funciona" },
+  { href: "#paginas", label: "Páginas" },
 ];
 
 export default function SiteHeader({
@@ -53,7 +52,7 @@ export default function SiteHeader({
   );
 
   const syncLabel = {
-    idle: "Al dia",
+    idle: "Al día",
     saving: "Guardando…",
     syncing: "Sincronizando…",
     error: "Reintentar",
@@ -113,7 +112,7 @@ export default function SiteHeader({
 
           <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 p-1">
             <span className="hidden px-2 text-[0.62rem] font-semibold tracking-[0.14em] text-ink-400 uppercase sm:inline">
-              Estoy como
+              Actuando como
             </span>
             {(["user1", "user2"] as const).map((id) => {
               const active = me === id;
@@ -126,7 +125,7 @@ export default function SiteHeader({
                   aria-pressed={active}
                   title={
                     locked
-                      ? `Entrar como ${users[id]} pide su PIN numerico`
+                      ? `Entrar como ${users[id]} requiere su PIN numérico`
                       : `Usar el calendario como ${users[id]}`
                   }
                   onClick={() => {
@@ -155,11 +154,11 @@ export default function SiteHeader({
               <button
                 type="button"
                 onClick={lockUser2}
-                title={`Bloquear la sesion de ${users.user2}`}
+                title={`Bloquear la sesión de ${users.user2}`}
                 className="ml-0.5 grid h-7 w-7 place-items-center rounded-full text-ink-400 transition-colors hover:bg-white/10 hover:text-white"
               >
                 <IconLock size={13} />
-                <span className="sr-only">Bloquear la sesion de {users.user2}</span>
+                <span className="sr-only">Bloquear la sesión de {users.user2}</span>
               </button>
             ) : null}
           </div>

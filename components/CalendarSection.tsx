@@ -122,7 +122,7 @@ export default function CalendarSection() {
 
   const monthCards = [
     { label: "Videos del mes", value: stats.total, color: "#c4b5fd" },
-    { label: "Dias con video", value: stats.daysWithVideo, color: "#67e8f9" },
+    { label: "Días con video", value: stats.daysWithVideo, color: "#67e8f9" },
     { label: "Pendientes", value: stats.pending, color: "#ff7382" },
     { label: "Listos", value: stats.ready, color: "#4ee79b" },
   ];
@@ -142,14 +142,8 @@ export default function CalendarSection() {
             ref={titleRef}
             className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl"
           >
-            El color de cada dia dice el estado, sin abrir nada.
+            El estado de cada día, visible de un vistazo.
           </h1>
-          <p data-intro-item className="max-w-2xl text-base leading-relaxed text-ink-300">
-            Toca un dia para asignar el video de esa pagina. Queda en{" "}
-            <span className="font-semibold text-danger-400">rojo</span> hasta que la otra persona
-            confirme que ya esta listo y pase a{" "}
-            <span className="font-semibold text-success-400">verde</span>.
-          </p>
         </div>
 
         <div data-reveal className="mt-8 flex flex-col gap-5">
@@ -284,7 +278,7 @@ export default function CalendarSection() {
                       })}
                       {entries.length > 2 ? (
                         <span className="pl-1 text-[0.6rem] text-ink-400">
-                          +{entries.length - 2} mas
+                          +{entries.length - 2} más
                         </span>
                       ) : null}
                     </span>
@@ -301,7 +295,8 @@ export default function CalendarSection() {
         >
           <NotifyStatus />
           <p className="text-center text-xs text-ink-500 sm:text-right">
-            Los dos pueden editar a la vez: los cambios se sincronizan solos cada pocos segundos.
+            Ambos pueden editar a la vez: los cambios se sincronizan automáticamente cada pocos
+            segundos.
           </p>
         </div>
       </div>

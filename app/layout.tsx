@@ -1,10 +1,23 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "VideoCal · Calendario compartido de videos",
   description:
-    "Calendario colaborativo para dos personas: asignen en rojo los videos pendientes, confirmen en verde los que ya estan listos y vean el estado de cada dia de un vistazo.",
+    "Calendario colaborativo para dos personas: asignen en rojo los videos pendientes, confirmen en verde los que ya están listos y consulten el estado de cada día de un vistazo.",
   applicationName: "VideoCal",
   keywords: [
     "calendario",
@@ -19,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VideoCal · Calendario compartido de videos",
     description:
-      "Rojo: video asignado. Verde: video listo. Sin color: dia libre. Un calendario para organizar quien sube que video cada dia.",
+      "Rojo: video asignado. Verde: video listo. Sin color: día libre. Un calendario para organizar quién publica qué video cada día.",
     type: "website",
     locale: "es_ES",
   },
@@ -33,7 +46,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${inter.variable} ${mono.variable}`}>
       <body>
         <a
           href="#calendario"

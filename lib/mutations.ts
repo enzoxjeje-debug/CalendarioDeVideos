@@ -112,10 +112,10 @@ export function applyAddPage(
   const name = input.name.trim();
   const used = new Set(state.pages.map((page) => page.name.toUpperCase()));
   if (used.has(name.toUpperCase())) {
-    throw new Error("Esa pagina ya existe");
+    throw new Error("Esa página ya existe");
   }
   if (state.pages.length >= 12) {
-    throw new Error("Maximo 12 paginas");
+    throw new Error("Máximo 12 páginas");
   }
   const accent =
     input.accent ?? ACCENTS[state.pages.length % ACCENTS.length] ?? "cyan";
@@ -133,7 +133,7 @@ export function applyAddPage(
 export function applyDeletePage(state: CalendarState, id: string): CalendarState {
   const page = state.pages.find((item) => item.id === id);
   if (!page) return state;
-  if (page.builtIn) throw new Error("Las paginas preestablecidas no se pueden borrar");
+  if (page.builtIn) throw new Error("Las páginas preestablecidas no se pueden borrar");
   return touch({
     ...state,
     pages: state.pages.filter((item) => item.id !== id),

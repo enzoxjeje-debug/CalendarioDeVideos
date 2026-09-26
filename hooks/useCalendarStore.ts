@@ -105,7 +105,7 @@ export function useCalendarStore(
         setError(null);
         return null;
       } catch {
-        return "Sin conexion con el servidor. Revisa tu red e intentalo otra vez.";
+        return "Sin conexión con el servidor. Revisa tu red e inténtalo de nuevo.";
       }
     },
     [setMe],
@@ -156,7 +156,7 @@ export function useCalendarStore(
         setSync("idle");
         return true;
       } catch {
-        setError("Sin conexion con el servidor. Revisa tu red e intentalo otra vez.");
+        setError("Sin conexión con el servidor. Revisa tu red e inténtalo de nuevo.");
         setSync("error");
         return false;
       } finally {
@@ -186,11 +186,11 @@ export function useCalendarStore(
           | (T & { error?: string })
           | null;
         if (!response.ok) {
-          return { ok: false, data, error: data?.error ?? "No se pudo completar la peticion" };
+          return { ok: false, data, error: data?.error ?? "No se pudo completar la petición" };
         }
         return { ok: true, data };
       } catch {
-        return { ok: false, data: null, error: "Sin conexion con el servidor" };
+        return { ok: false, data: null, error: "Sin conexión con el servidor" };
       }
     },
     [user2Token],
