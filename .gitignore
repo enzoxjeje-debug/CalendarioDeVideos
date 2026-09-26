@@ -1,0 +1,26 @@
+# dependencias
+node_modules
+
+# Next.js
+.next
+out
+build
+next-env.d.ts
+
+# Vercel
+.vercel
+
+# entorno y secretos
+.env
+.env.*.local
+.env.local
+
+# datos locales (sustituidos por Redis en produccion)
+.data
+
+# TypeScript
+*.tsbuildinfo
+
+# herramientas / sistema
+.freebuff
+.DS_Store
